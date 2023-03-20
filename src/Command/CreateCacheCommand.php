@@ -3,7 +3,7 @@
 
 namespace RequireOnceGenerator\Command;
 
-use RequireOnceGenerator\Analyzer\GenerateClassPath;
+use RequireOnceGenerator\Analyzer\GenerateClassList;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Exception\InvalidArgumentException;
 use Symfony\Component\Console\Input\InputInterface;
@@ -14,15 +14,15 @@ class CreateCacheCommand extends Command
 {
     protected static $defaultName = 'create-class-map';
     /**
-     * @var GenerateClassPath
+     * @var GenerateClassList
      */
-    private GenerateClassPath $generateClassPath;
+    private GenerateClassList $generateClassPath;
 
     /**
-     * @param GenerateClassPath $generateClassPath
+     * @param GenerateClassList $generateClassPath
      * @return CreateCacheCommand
      */
-    public function setGenerateClassPath(GenerateClassPath $generateClassPath): self
+    public function setGenerateClassPath(GenerateClassList $generateClassPath): self
     {
         $this->generateClassPath = $generateClassPath;
         return $this;
@@ -30,13 +30,7 @@ class CreateCacheCommand extends Command
 
     protected function execute(InputInterface $input, OutputInterface $output): int
     {
-        $path = $input->getOption('path');
-
-        if (!\is_string($path)) {
-            throw new InvalidArgumentException('The path option required');
-        }
-
-        $this->generateClassPath->create($path);
+        $this->generateClassPath->create();
 
         return Command::SUCCESS;
     }

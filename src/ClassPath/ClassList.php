@@ -4,7 +4,7 @@
 namespace RequireOnceGenerator\ClassPath;
 
 
-class ClassPaths
+class ClassList
 {
     /**
      * ClassPaths constructor.

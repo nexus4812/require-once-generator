@@ -2,7 +2,7 @@
 <?php
 
 use DI\Container;
-use RequireOnceGenerator\Analyzer\GenerateClassPath;
+use RequireOnceGenerator\Analyzer\GenerateClassList;
 use RequireOnceGenerator\Command\CreateCacheCommand;
 use Symfony\Component\Console\Application;
 
@@ -12,5 +12,5 @@ require_once __DIR__ . '/vendor/autoload.php';
 $container = require_once __DIR__ .'/bootstrap/container.php';
 
 $app = new Application('Require once generator', '0.1.0');
-$app->add((new CreateCacheCommand())->setGenerateClassPath($container->make(GenerateClassPath::class)));
+$app->add((new CreateCacheCommand())->setGenerateClassPath($container->make(GenerateClassList::class)));
 $app->run();

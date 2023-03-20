@@ -4,7 +4,6 @@
 namespace RequireOnceGenerator\ClassPath;
 
 use PhpParser\Parser;
-use PhpParser\ParserFactory;
 use RequireOnceGenerator\Parser\NodeFilter;
 
 class ClassPathFactory
@@ -23,9 +22,9 @@ class ClassPathFactory
 
     /**
      * @param string $path
-     * @return ClassPaths
+     * @return ClassList
      */
-    public function create(string $path): ClassPaths
+    public function create(string $path): ClassList
     {
         $stmts = $this->parser->parse(file_get_contents($path));
 
@@ -35,14 +34,21 @@ class ClassPathFactory
             $namespace_s[0]->name->toString() :
             'null';
 
+        if (count($namespace_s) >= 2) {
+            throw new \RuntimeException('Multiple namespaces are set for a single file. path:' . $path);
+        }
+
         $classes = $this->nodeFilter->filterClassLike($stmts);
 
         $result = [];
         foreach ($classes as $class) {
+            if (empty($class->name)) {
+                continue;
+            }
             $alias = $namespace ? $namespace . '\\' : '';
-            $result[] = new ClassPath($alias. $class->name?->toString(), realpath($path));
+            $result[] = new ClassPath($alias. $class->name->toString(), realpath($path));
         }
 
-        return new ClassPaths($result);
+        return new ClassList($result);
     }
 }
