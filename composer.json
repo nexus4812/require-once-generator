@@ -1,0 +1,36 @@
+{
+    "name": "my/require-once-generator",
+    "autoload": {
+        "psr-4": {
+            "RequireOnceGenerator\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "nexus4812"
+        }
+    ],
+    "require": {
+        "nikic/php-parser": "^4.15",
+        "symfony/console": "^6.2",
+        "symfony/finder": "^6.2",
+        "php-di/php-di": "^7.0"
+    },
+    "require-dev": {
+        "friendsofphp/php-cs-fixer": "^3.14",
+        "phpunit/phpunit": "*",
+        "phpstan/phpstan": "^1.9",
+        "mockery/mockery": "^1.5"
+    },
+    "scripts": {
+        "fixer": "vendor/bin/php-cs-fixer fix",
+        "stan": "vendor/bin/phpstan analyse -l max src bootstrap",
+        "md": "vendor/bin/phpmd src,bootstrap json phpmd.xml",
+        "unit": "php vendor/phpunit/phpunit/phpunit",
+        "inspect": [
+            "composer fixer",
+            "composer stan",
+            "composer md"
+        ]
+    }
+}
