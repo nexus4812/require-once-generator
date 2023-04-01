@@ -12,7 +12,7 @@ use RequireOnceGenerator\Config\ProjectPath;
 use function DI\autowire;
 
 return [
-    Parser::class => fn() => (new ParserFactory)->create(ParserFactory::PREFER_PHP7),
-    ProjectPath::class => fn() => (new ProjectPath(realpath('./'))),
+    Parser::class => fn(): Parser => (new ParserFactory)->create(ParserFactory::PREFER_PHP7),
+    ProjectPath::class => fn(): ProjectPath => (new ProjectPath(getcwd() ?: '')),
     GeneratorConfigInterface::class => autowire(GeneratorConfig::class)
 ];

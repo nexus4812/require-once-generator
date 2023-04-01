@@ -2,7 +2,8 @@
     "name": "my/require-once-generator",
     "autoload": {
         "psr-4": {
-            "RequireOnceGenerator\\": "src/"
+            "RequireOnceGenerator\\": "src/",
+            "RequireOnceGeneratorDomain\\": "domain/"
         }
     },
     "authors": [
@@ -20,17 +21,23 @@
         "friendsofphp/php-cs-fixer": "^3.14",
         "phpunit/phpunit": "*",
         "phpstan/phpstan": "^1.9",
-        "mockery/mockery": "^1.5"
+        "mockery/mockery": "^1.5",
+        "phpmd/phpmd": "^2.13",
+        "qossmic/deptrac-shim": "^1.0"
     },
     "scripts": {
         "fixer": "vendor/bin/php-cs-fixer fix",
-        "stan": "vendor/bin/phpstan analyse -l max src bootstrap",
-        "md": "vendor/bin/phpmd src,bootstrap json phpmd.xml",
+        "stan": "vendor/bin/phpstan analyse -l max src bootstrap domain",
+        "md": "vendor/bin/phpmd src,domain,bootstrap text cleancode,codesize,controversial,design,naming,unusedcode",
+        "deptrac": "vendor/bin/deptrac analyse",
+        "deptrac-display": "vendor/bin/deptrac analyse --formatter=graphviz-display",
         "unit": "php vendor/phpunit/phpunit/phpunit",
         "inspect": [
             "composer fixer",
             "composer stan",
+            "composer deptrac",
             "composer md"
-        ]
+        ],
+        "create-class-map": "php generator.php create-class-map"
     }
 }

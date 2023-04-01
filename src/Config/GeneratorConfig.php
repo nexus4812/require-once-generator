@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 
 namespace RequireOnceGenerator\Config;
 
@@ -7,22 +7,37 @@ use Symfony\Component\Finder\Finder;
 class GeneratorConfig implements GeneratorConfigInterface
 {
     /**
-     * RequireOnceGeneratorConfig constructor.
+     * @param ProjectPath $path
      */
     public function __construct(private ProjectPath $path)
     {
     }
 
     /**
-     * @return string
+     * @inheritDoc
      */
     public function getClassListCachePath(): string
     {
         return $this->path->basePath('.require-once-generator.cache');
     }
 
+    /**
+     * @inheritDoc
+     */
     public function getDependentClassFinder(): Finder
     {
-        return Finder::create()->in($this->path->basePath('vendor'))->name('*.php');
+        return Finder::create()->in(
+            [
+                $this->path->basePath('src'),
+                $this->path->basePath('domain'),
+            ])->name('*.php');
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function getTargetFinder(): Finder
+    {
+        return Finder::create()->in($this->path->basePath('src'))->name('*.php');
     }
 }

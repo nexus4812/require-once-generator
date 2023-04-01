@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 
 
 namespace RequireOnceGenerator\Config;
@@ -20,6 +20,6 @@ class ProjectPath
      */
     public function basePath(string $path = ''): string
     {
-        return $this->basePath.($path != '' ? DIRECTORY_SEPARATOR.$path : '');
+        return $this->basePath.($path !== '' ? \DIRECTORY_SEPARATOR.$path : '');
     }
 }

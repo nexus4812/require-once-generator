@@ -5,32 +5,38 @@ namespace RequireOnceGenerator\Command;
 
 use RequireOnceGenerator\Analyzer\GenerateClassList;
 use Symfony\Component\Console\Command\Command;
-use Symfony\Component\Console\Exception\InvalidArgumentException;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
 
-class CreateCacheCommand extends Command
+class CreateClassListCacheCommand extends Command
 {
     protected static $defaultName = 'create-class-map';
     /**
      * @var GenerateClassList
      */
-    private GenerateClassList $generateClassPath;
+    private GenerateClassList $generateClassList;
 
     /**
-     * @param GenerateClassList $generateClassPath
-     * @return CreateCacheCommand
+     * @param GenerateClassList $generateClassList
+     * @return CreateClassListCacheCommand
      */
-    public function setGenerateClassPath(GenerateClassList $generateClassPath): self
+    public function setGenerateClassList(GenerateClassList $generateClassList): self
     {
-        $this->generateClassPath = $generateClassPath;
+        $this->generateClassList = $generateClassList;
         return $this;
     }
 
+    /**
+     * @param InputInterface $input
+     * @param OutputInterface $output
+     * @return int
+     *
+     * @SuppressWarnings(PHPMD.UnusedFormalParameter)
+     */
     protected function execute(InputInterface $input, OutputInterface $output): int
     {
-        $this->generateClassPath->create();
+        $this->generateClassList->create();
 
         return Command::SUCCESS;
     }

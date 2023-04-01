@@ -1,0 +1,46 @@
+deptrac:
+  paths:
+    - ./src
+    - ./domain
+  exclude_files:
+    - '#.*test.*#'
+  layers:
+    - name: ValueObject
+      collectors:
+        - type: directory
+          value: domain/ValueObject/.*
+
+    - name: Collection
+      collectors:
+        - type: directory
+          value: domain/Collection/.*
+
+    - name: Entity
+      collectors:
+        - type: directory
+          value: domain/Entity/.*
+
+    - name: Application
+      collectors:
+        - type: directory
+          value: src.*
+
+  ruleset:
+    Application:
+      - ValueObject
+      - Collection
+      - Entity
+    Entity:
+      - ValueObject
+      - Collection
+    Collection:
+      - Entity
+      - ValueObject
+
+  formatters:
+    graphviz:
+      groups:
+        Domain:
+          - ValueObject
+          - Collection
+          - Entity

@@ -10,11 +10,6 @@ use SplFileInfo;
 
 class GenerateClassList
 {
-    /**
-     * GenerateClassPath constructor.
-     * @param ClassPathFactory $pathFactory
-     * @param GeneratorConfigInterface $config
-     */
     public function __construct(
         private ClassPathFactory $pathFactory,
         private GeneratorConfigInterface $config

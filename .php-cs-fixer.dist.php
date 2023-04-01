@@ -3,12 +3,9 @@
 declare(strict_types=1);
 
 $finder = PhpCsFixer\Finder::create()
-    ->path([
-        __DIR__ . '/generator.php',
-        __DIR__ . '/.php-cs-fixer.dist.php',
-    ])
     ->in([
         __DIR__ . '/src',
+        __DIR__ . '/domain',
         __DIR__ . '/bootstrap',
     ]);
 

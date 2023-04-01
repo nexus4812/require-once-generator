@@ -26,15 +26,19 @@ class ClassPathFactory
      */
     public function create(string $path): ClassList
     {
-        $stmts = $this->parser->parse(file_get_contents($path));
+        $stmts = $this->parser->parse(file_get_contents($path) ?: '');
+
+        if ($stmts === null) {
+            return new ClassList();
+        }
 
         $namespace_s = $this->nodeFilter->filterNameSpace($stmts);
 
         $namespace = !empty($namespace_s[0]) ?
-            $namespace_s[0]->name->toString() :
-            'null';
+            $namespace_s[0]->name?->toString() :
+            null;
 
-        if (count($namespace_s) >= 2) {
+        if (\count($namespace_s) >= 2) {
             throw new \RuntimeException('Multiple namespaces are set for a single file. path:' . $path);
         }
 
@@ -46,7 +50,10 @@ class ClassPathFactory
                 continue;
             }
             $alias = $namespace ? $namespace . '\\' : '';
-            $result[] = new ClassPath($alias. $class->name->toString(), realpath($path));
+
+            /** @var class-string $classString */
+            $classString = $alias . $class->name->toString();
+            $result[] = new ClassPath($classString, realpath($path) ?: '');
         }
 
         return new ClassList($result);
