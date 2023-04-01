@@ -10,12 +10,12 @@ use RequireOnceGeneratorDomain\Validation\AssertArrayInstanceOf;
  * @template TKey of array-key
  * @template TValue of object
  */
-class ObjectCollection extends Collection
+class ObjectCollection extends Collection // @phpstan-ignore-line
 {
     use AssertArrayInstanceOf;
 
     /** @var class-string<TValue>  */
-    protected const CLASS_NAME = '';
+    protected const CLASS_NAME = ''; /** @phpstan-ignore-line */
 
     /**
      * Create a new collection.
@@ -25,7 +25,7 @@ class ObjectCollection extends Collection
      */
     public function __construct(array $items = [])
     {
-        $this->assertArrayInstanceOf(self::CLASS_NAME, $items);
+        $this->assertArrayInstanceOf(self::CLASS_NAME, $items); // @phpstan-ignore-line
         parent::__construct($items);
     }
 
@@ -34,7 +34,7 @@ class ObjectCollection extends Collection
      */
     public function add(mixed $item): void
     {
-        $this->assertInstanceOf(self::CLASS_NAME, $item);
+        $this->assertInstanceOf(self::CLASS_NAME, $item); // @phpstan-ignore-line
         $this->items[] = $item;
     }
 }

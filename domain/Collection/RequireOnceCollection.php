@@ -5,7 +5,7 @@ namespace RequireOnceGeneratorDomain\Collection;
 
 use RequireOnceGeneratorDomain\Entity\RequireOnce;
 
-class RequireOnceCollection extends Collection
+class RequireOnceCollection extends Collection // @phpstan-ignore-line
 {
     /**
      * Create a new collection.
@@ -13,7 +13,7 @@ class RequireOnceCollection extends Collection
      * @param  array<string, RequireOnce> $items
      * @return void
      */
-    public function __construct(protected array $items = [])
+    public function __construct(protected array $items = []) // @phpstan-ignore-line
     {
         parent::__construct($this->items);
     }
