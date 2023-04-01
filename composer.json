@@ -2,14 +2,12 @@
     "name": "my/require-once-generator",
     "autoload": {
         "psr-4": {
-            "RequireOnceGenerator\\": "src/",
-            "RequireOnceGeneratorDomain\\": "domain/"
+            "RequireOnceGenerator\\": "src/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "Tests\\RequireOnceGenerator\\": "tests",
-            "Tests\\RequireOnceGeneratorDomain\\": "tests"
+            "Tests\\RequireOnceGenerator\\": "tests"
         }
     },
     "authors": [

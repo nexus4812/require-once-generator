@@ -1,11 +1,11 @@
 <?php declare(strict_types=1);
 
 
-namespace RequireOnceGeneratorDomain\Entity;
+namespace RequireOnceGenerator\Domain\Entity;
 
-use RequireOnceGeneratorDomain\ValueObject\AbsolutePath;
-use RequireOnceGeneratorDomain\ValueObject\LoadMethod;
-use RequireOnceGeneratorDomain\ValueObject\RequireOncePrefix;
+use RequireOnceGenerator\Domain\ValueObject\AbsolutePath;
+use RequireOnceGenerator\Domain\ValueObject\LoadMethod;
+use RequireOnceGenerator\Domain\ValueObject\RequireOncePrefix;
 
 class RequireOnce
 {

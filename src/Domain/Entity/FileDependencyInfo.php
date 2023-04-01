@@ -1,12 +1,11 @@
 <?php declare(strict_types=1);
 
 
-namespace RequireOnceGeneratorDomain\Entity;
+namespace RequireOnceGenerator\Domain\Entity;
 
 
-use JetBrains\PhpStorm\ArrayShape;
-use RequireOnceGeneratorDomain\Collection\RequireOnceCollection;
-use RequireOnceGeneratorDomain\ValueObject\AbsolutePath;
+use RequireOnceGenerator\Domain\Collection\RequireOnceCollection;
+use RequireOnceGenerator\Domain\ValueObject\AbsolutePath;
 
 class FileDependencyInfo
 {

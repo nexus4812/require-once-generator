@@ -1,10 +1,10 @@
 <?php declare(strict_types=1);
 
 
-namespace RequireOnceGeneratorDomain\Collection;
+namespace RequireOnceGenerator\Domain\Collection;
 
 
-use RequireOnceGeneratorDomain\Validation\AssertArrayInstanceOf;
+use RequireOnceGenerator\Domain\Validation\AssertArrayInstanceOf;
 
 /**
  * @template TKey of array-key

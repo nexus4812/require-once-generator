@@ -1,7 +1,7 @@
 <?php declare(strict_types=1);
 
 
-namespace RequireOnceGeneratorDomain\Validation;
+namespace RequireOnceGenerator\Domain\Validation;
 
 
 trait AssertInstanceOf

@@ -5,7 +5,7 @@ namespace RequireOnceGenerator\Application\Parser;
 
 
 use PhpParser\Parser;
-use RequireOnceGeneratorDomain\ValueObject\AbsolutePath;
+use RequireOnceGenerator\Domain\ValueObject\AbsolutePath;
 
 class NodeCollectionFactory
 {

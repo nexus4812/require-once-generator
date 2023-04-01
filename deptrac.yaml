@@ -1,29 +1,28 @@
 deptrac:
   paths:
     - ./src
-    - ./domain
   exclude_files:
     - '#.*test.*#'
   layers:
     - name: ValueObject
       collectors:
         - type: directory
-          value: domain/ValueObject/.*
+          value: src/Domain/ValueObject/.*
 
     - name: Collection
       collectors:
         - type: directory
-          value: domain/Collection/.*
+          value: src/Domain/Collection/.*
 
     - name: Entity
       collectors:
         - type: directory
-          value: domain/Entity/.*
+          value: src/Domain/Entity/.*
 
     - name: Application
       collectors:
         - type: directory
-          value: src.*
+          value: src/Application.*
 
   ruleset:
     Application:

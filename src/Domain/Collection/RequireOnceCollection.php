@@ -1,9 +1,9 @@
 <?php declare(strict_types=1);
 
 
-namespace RequireOnceGeneratorDomain\Collection;
+namespace RequireOnceGenerator\Domain\Collection;
 
-use RequireOnceGeneratorDomain\Entity\RequireOnce;
+use RequireOnceGenerator\Domain\Entity\RequireOnce;
 
 class RequireOnceCollection extends Collection // @phpstan-ignore-line
 {

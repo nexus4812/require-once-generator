@@ -5,8 +5,8 @@ namespace RequireOnceGenerator\Application\Analyzer;
 
 use RequireOnceGenerator\Application\Config\GeneratorConfigInterface;
 use RequireOnceGenerator\Application\Parser\NodeCollectionFactory;
-use RequireOnceGeneratorDomain\Entity\FileDependencyInfo;
-use RequireOnceGeneratorDomain\ValueObject\AbsolutePath;
+use RequireOnceGenerator\Domain\Entity\FileDependencyInfo;
+use RequireOnceGenerator\Domain\ValueObject\AbsolutePath;
 use SplFileInfo;
 
 class GenerateRequireOnce

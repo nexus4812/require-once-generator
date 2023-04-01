@@ -1,7 +1,7 @@
 <?php declare(strict_types=1);
 
 
-namespace RequireOnceGeneratorDomain\ValueObject;
+namespace RequireOnceGenerator\Domain\ValueObject;
 
 
 class LoadMethod implements ValueObjectInterface
