@@ -6,6 +6,12 @@
             "RequireOnceGeneratorDomain\\": "domain/"
         }
     },
+    "autoload-dev": {
+        "psr-4": {
+            "Tests\\RequireOnceGenerator\\": "tests",
+            "Tests\\RequireOnceGeneratorDomain\\": "tests"
+        }
+    },
     "authors": [
         {
             "name": "nexus4812"
@@ -23,7 +29,8 @@
         "phpstan/phpstan": "^1.9",
         "mockery/mockery": "^1.5",
         "phpmd/phpmd": "^2.13",
-        "qossmic/deptrac-shim": "^1.0"
+        "qossmic/deptrac-shim": "^1.0",
+        "phpunitgen/console": "^5.0"
     },
     "scripts": {
         "fixer": "vendor/bin/php-cs-fixer fix",
