@@ -1,7 +1,7 @@
 <?php declare(strict_types=1);
 
 
-namespace RequireOnceGenerator\Config;
+namespace RequireOnceGenerator\Application\Config;
 
 
 class ProjectPath

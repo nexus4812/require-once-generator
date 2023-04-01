@@ -1,7 +1,7 @@
 <?php declare(strict_types=1);
 
 
-namespace RequireOnceGenerator\ClassPath;
+namespace RequireOnceGenerator\Application\ClassPath;
 
 
 class ClassPath

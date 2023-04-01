@@ -1,11 +1,11 @@
 <?php declare(strict_types=1);
 
 
-namespace RequireOnceGenerator\Analyzer;
+namespace RequireOnceGenerator\Application\Analyzer;
 
-use RequireOnceGenerator\ClassPath\ClassPathFactory;
-use RequireOnceGenerator\ClassPath\ClassList;
-use RequireOnceGenerator\Config\GeneratorConfigInterface;
+use RequireOnceGenerator\Application\ClassPath\ClassPathFactory;
+use RequireOnceGenerator\Application\ClassPath\ClassList;
+use RequireOnceGenerator\Application\Config\GeneratorConfigInterface;
 use SplFileInfo;
 
 class GenerateClassList

@@ -1,6 +1,6 @@
 <?php declare(strict_types=1);
 
-namespace RequireOnceGenerator\Config;
+namespace RequireOnceGenerator\Application\Config;
 
 use Symfony\Component\Finder\Finder;
 

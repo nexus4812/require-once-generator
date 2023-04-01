@@ -2,10 +2,10 @@
 <?php
 
 use DI\Container;
-use RequireOnceGenerator\Analyzer\GenerateClassList;
-use RequireOnceGenerator\Analyzer\GenerateRequireOnce;
-use RequireOnceGenerator\Command\CreateClassListCacheCommand;
-use RequireOnceGenerator\Command\GenerateRequireOnceCommand;
+use RequireOnceGenerator\Application\Analyzer\GenerateClassList;
+use RequireOnceGenerator\Application\Analyzer\GenerateRequireOnce;
+use RequireOnceGenerator\Application\Command\CreateClassListCacheCommand;
+use RequireOnceGenerator\Application\Command\GenerateRequireOnceCommand;
 use Symfony\Component\Console\Application;
 
 require_once __DIR__ . '/vendor/autoload.php';

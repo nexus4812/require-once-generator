@@ -1,7 +1,7 @@
 <?php declare(strict_types=1);
 
 
-namespace RequireOnceGenerator\Parser;
+namespace RequireOnceGenerator\Application\Parser;
 
 
 use PhpParser\Parser;

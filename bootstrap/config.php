@@ -6,9 +6,9 @@ namespace My\PhpDiSandbox\PHPDI\AutoWire\Boostrap;
 
 use PhpParser\Parser;
 use PhpParser\ParserFactory;
-use RequireOnceGenerator\Config\GeneratorConfig;
-use RequireOnceGenerator\Config\GeneratorConfigInterface;
-use RequireOnceGenerator\Config\ProjectPath;
+use RequireOnceGenerator\Application\Config\GeneratorConfig;
+use RequireOnceGenerator\Application\Config\GeneratorConfigInterface;
+use RequireOnceGenerator\Application\Config\ProjectPath;
 use function DI\autowire;
 
 return [

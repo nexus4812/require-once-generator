@@ -1,10 +1,10 @@
 <?php declare(strict_types=1);
 
 
-namespace RequireOnceGenerator\ClassPath;
+namespace RequireOnceGenerator\Application\ClassPath;
 
 use PhpParser\Parser;
-use RequireOnceGenerator\Parser\NodeFilter;
+use RequireOnceGenerator\Application\Parser\NodeFilter;
 
 class ClassPathFactory
 {

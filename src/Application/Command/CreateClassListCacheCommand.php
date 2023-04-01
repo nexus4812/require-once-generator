@@ -1,9 +1,9 @@
 <?php declare(strict_types=1);
 
 
-namespace RequireOnceGenerator\Command;
+namespace RequireOnceGenerator\Application\Command;
 
-use RequireOnceGenerator\Analyzer\GenerateClassList;
+use RequireOnceGenerator\Application\Analyzer\GenerateClassList;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;

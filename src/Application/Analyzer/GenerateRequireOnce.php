@@ -1,10 +1,10 @@
 <?php declare(strict_types=1);
 
 
-namespace RequireOnceGenerator\Analyzer;
+namespace RequireOnceGenerator\Application\Analyzer;
 
-use RequireOnceGenerator\Config\GeneratorConfigInterface;
-use RequireOnceGenerator\Parser\NodeCollectionFactory;
+use RequireOnceGenerator\Application\Config\GeneratorConfigInterface;
+use RequireOnceGenerator\Application\Parser\NodeCollectionFactory;
 use RequireOnceGeneratorDomain\Entity\FileDependencyInfo;
 use RequireOnceGeneratorDomain\ValueObject\AbsolutePath;
 use SplFileInfo;
