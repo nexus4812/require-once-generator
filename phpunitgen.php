@@ -84,7 +84,7 @@ return [
      | This string will be removed from the test class namespace.
      |--------------------------------------------------------------------------
      */
-    'baseNamespace'            => '',
+    'baseNamespace'            => 'RequireOnceGenerator',
 
     /*
      |--------------------------------------------------------------------------
@@ -93,7 +93,7 @@ return [
      | This string will be prepend to the test class namespace.
      |--------------------------------------------------------------------------
      */
-    'baseTestNamespace'        => 'Tests',
+    'baseTestNamespace'        => 'RequireOnceGenerator',
 
     /*
      |--------------------------------------------------------------------------
