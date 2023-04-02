@@ -5,6 +5,8 @@ namespace RequireOnceGenerator\Application\ClassPath;
 
 use PhpParser\Parser;
 use RequireOnceGenerator\Application\Parser\NodeFilter;
+use RuntimeException;
+use function count;
 
 class ClassPathFactory
 {
@@ -32,14 +34,14 @@ class ClassPathFactory
             return new ClassList();
         }
 
-        $namespace_s = $this->nodeFilter->filterNameSpace($stmts);
+        $filterNameSpace = $this->nodeFilter->filterNameSpace($stmts);
 
-        $namespace = !empty($namespace_s[0]) ?
-            $namespace_s[0]->name?->toString() :
+        $namespace = !empty($filterNameSpace[0]) ?
+            $filterNameSpace[0]->name?->toString() :
             null;
 
-        if (\count($namespace_s) >= 2) {
-            throw new \RuntimeException('Multiple namespaces are set for a single file. path:' . $path);
+        if (\count($filterNameSpace) >= 2) {
+            throw new RuntimeException('Multiple namespaces are set for a single file. path:' . $path);
         }
 
         $classes = $this->nodeFilter->filterClassLike($stmts);

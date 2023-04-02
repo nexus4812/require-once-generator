@@ -32,11 +32,12 @@
     },
     "scripts": {
         "fixer": "vendor/bin/php-cs-fixer fix",
-        "stan": "vendor/bin/phpstan analyse -l max src bootstrap domain",
-        "md": "vendor/bin/phpmd src,domain,bootstrap text cleancode,codesize,controversial,design,naming,unusedcode",
+        "stan": "vendor/bin/phpstan analyse -l max src bootstrap tests",
+        "md": "vendor/bin/phpmd src,bootstrap text cleancode,codesize,controversial,design,naming,unusedcode",
         "deptrac": "vendor/bin/deptrac analyse",
         "deptrac-display": "vendor/bin/deptrac analyse --formatter=graphviz-display",
-        "unit": "php vendor/phpunit/phpunit/phpunit",
+        "unit": "vendor/phpunit/phpunit/phpunit",
+        "phpunitgen": "vendor/bin/phpunitgen src",
         "inspect": [
             "composer fixer",
             "composer stan",

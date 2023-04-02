@@ -11,7 +11,7 @@ class FileDependencyInfo
 {
     public function __construct(
         private AbsolutePath $filePath,
-        private RequireOnceCollection $require_onces
+        private RequireOnceCollection $requireOnces
     )
     {
     }
@@ -23,7 +23,7 @@ class FileDependencyInfo
 
     public function addRequireOnce(RequireOnce $string): void
     {
-        $this->require_onces->add($string);
+        $this->requireOnces->add($string);
     }
 
     /**
@@ -34,7 +34,7 @@ class FileDependencyInfo
     {
         return [
             'file_path' => $this->filePath,
-            'require_onces' => $this->require_onces,
+            'require_onces' => $this->requireOnces,
         ];
     }
 }

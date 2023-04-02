@@ -8,7 +8,7 @@ class RequireOncePrefix implements ValueObjectInterface
 {
     public function __construct(
         private string $prefix,
-        private AbsolutePath $replace_path
+        private AbsolutePath $replacePath
     )
     {
     }
@@ -20,7 +20,7 @@ class RequireOncePrefix implements ValueObjectInterface
 
     public function toPrefixPath(AbsolutePath $path): string
     {
-        $relativePath = str_replace($this->replace_path->value(), '', $path->value()) ?: '';
+        $relativePath = str_replace($this->replacePath->value(), '', $path->value()) ?: '';
         return $this->prefix . '/' . $relativePath;
     }
 }

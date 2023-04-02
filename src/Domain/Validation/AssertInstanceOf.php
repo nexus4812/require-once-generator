@@ -4,6 +4,8 @@
 namespace RequireOnceGenerator\Domain\Validation;
 
 
+use InvalidArgumentException;
+
 trait AssertInstanceOf
 {
     /**
@@ -15,6 +17,6 @@ trait AssertInstanceOf
         if ($object instanceof $className) {
             return;
         }
-        throw new \InvalidArgumentException(__CLASS__. " didn't receive $className");
+        throw new InvalidArgumentException(__CLASS__. " didn't receive $className");
     }
 }

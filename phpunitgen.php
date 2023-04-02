@@ -21,7 +21,7 @@ return [
      | overwritten (useful when "overwriteFile" is enabled).
      |--------------------------------------------------------------------------
      */
-    'backupFiles'              => true,
+    'backupFiles'              => false,
 
     /*
      |--------------------------------------------------------------------------
@@ -65,7 +65,7 @@ return [
      | complex tests skeleton (getter/setter tests...).
      |--------------------------------------------------------------------------
      */
-    'automaticGeneration'      => true,
+    'automaticGeneration'      => false,
 
     /*
      |--------------------------------------------------------------------------
@@ -120,7 +120,7 @@ return [
      | Tells if the test class should declare strict types.
      |--------------------------------------------------------------------------
      */
-    'testClassStrictTypes'     => false,
+    'testClassStrictTypes'     => true,
 
     /*
      |--------------------------------------------------------------------------

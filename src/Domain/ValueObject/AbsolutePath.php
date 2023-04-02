@@ -5,10 +5,11 @@ namespace RequireOnceGenerator\Domain\ValueObject;
 
 
 use SplFileInfo;
+use Stringable;
 
-class AbsolutePath implements ValueObjectInterface, \Stringable
+class AbsolutePath implements ValueObjectInterface, Stringable
 {
-    public function __construct(private string $absolutePath)
+    public function __construct(private string $path)
     {
     }
 
@@ -19,7 +20,7 @@ class AbsolutePath implements ValueObjectInterface, \Stringable
 
     public function value(): string
     {
-        return $this->absolutePath;
+        return $this->path;
     }
 
     public function __toString(): string

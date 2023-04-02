@@ -17,23 +17,23 @@ class LoadMethod implements ValueObjectInterface
     /**
      * LoadMethod constructor.
      */
-    private function __construct(private string $method_name)
+    private function __construct(private string $methodName)
     {
     }
 
-    public static function require_once(): self
+    public static function requireOnce(): self
     {
         return new self(self::REQUIRE_ONCE);
     }
 
-    public static function include_once(): self
+    public static function includeOnce(): self
     {
         return new self(self::INCLUDE_ONCE);
     }
 
     public function value(): string
     {
-        return $this->method_name;
+        return $this->methodName;
     }
 
     public function createPHPCode(string $argument): string

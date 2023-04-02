@@ -6,6 +6,7 @@ namespace RequireOnceGenerator\Application\Parser;
 
 use PhpParser\Parser;
 use RequireOnceGenerator\Domain\ValueObject\AbsolutePath;
+use RuntimeException;
 
 class NodeCollectionFactory
 {
@@ -20,7 +21,7 @@ class NodeCollectionFactory
     {
         $stmts = $this->parser->parse($rawCode);
         if (null === $stmts) {
-            throw new \RuntimeException('parse return is null');
+            throw new RuntimeException('parse return is null');
         }
         return new NodeCollection($this->filter, $stmts);
     }

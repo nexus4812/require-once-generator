@@ -11,7 +11,7 @@ class RequireOnce
 {
     public function __construct(
         private LoadMethod $loadMethod,
-        private AbsolutePath $require_file_path,
+        private AbsolutePath $requireFilePath,
         private RequireOncePrefix|null $prefix
     )
     {
@@ -26,8 +26,8 @@ class RequireOnce
     public function createPHPCode(): string
     {
         $path = $this->prefix ?
-            $this->prefix->toPrefixPath($this->require_file_path) :
-            $this->require_file_path->value();
+            $this->prefix->toPrefixPath($this->requireFilePath) :
+            $this->requireFilePath->value();
 
         return $this->loadMethod->createPHPCode($path);
     }
