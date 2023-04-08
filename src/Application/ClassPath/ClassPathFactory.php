@@ -4,9 +4,9 @@
 namespace RequireOnceGenerator\Application\ClassPath;
 
 use PhpParser\Parser;
+use RequireOnceGenerator\Application\Helper\StrictFunctions;
 use RequireOnceGenerator\Application\Parser\NodeFilter;
 use RuntimeException;
-use function count;
 
 class ClassPathFactory
 {
@@ -28,7 +28,9 @@ class ClassPathFactory
      */
     public function create(string $path): ClassList
     {
-        $stmts = $this->parser->parse(file_get_contents($path) ?: '');
+        $contents = StrictFunctions::fileGetContents($path);
+
+        $stmts = $this->parser->parse($contents);
 
         if ($stmts === null) {
             return new ClassList();
@@ -36,7 +38,7 @@ class ClassPathFactory
 
         $filterNameSpace = $this->nodeFilter->filterNameSpace($stmts);
 
-        $namespace = !empty($filterNameSpace[0]) ?
+        $namespace = \array_key_exists(0, $filterNameSpace) ?
             $filterNameSpace[0]->name?->toString() :
             null;
 
@@ -48,14 +50,14 @@ class ClassPathFactory
 
         $result = [];
         foreach ($classes as $class) {
-            if (empty($class->name)) {
+            if ($class->name === null) {
                 continue;
             }
-            $alias = $namespace ? $namespace . '\\' : '';
+            $alias = $namespace !== null ? $namespace . '\\' : '';
 
             /** @var class-string $classString */
             $classString = $alias . $class->name->toString();
-            $result[] = new ClassPath($classString, realpath($path) ?: '');
+            $result[] = new ClassPath($classString, StrictFunctions::realpath($path));
         }
 
         return new ClassList($result);

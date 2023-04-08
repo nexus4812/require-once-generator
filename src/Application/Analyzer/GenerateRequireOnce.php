@@ -5,8 +5,8 @@ namespace RequireOnceGenerator\Application\Analyzer;
 
 use RequireOnceGenerator\Application\Config\GeneratorConfigInterface;
 use RequireOnceGenerator\Application\Parser\NodeCollectionFactory;
-use RequireOnceGenerator\Domain\Entity\FileDependencyInfo;
-use RequireOnceGenerator\Domain\ValueObject\AbsolutePath;
+use RequireOnceGenerator\Domain\Model\Entity\FileDependencyInfo;
+use RequireOnceGenerator\Domain\Model\ValueObject\AbsolutePath;
 use SplFileInfo;
 
 class GenerateRequireOnce
@@ -31,15 +31,15 @@ class GenerateRequireOnce
             $requireOnceInfo = FileDependencyInfo::createWithEmpty($absolutePath);
             foreach ($nodes->filterName() as $name) {
                 # Append other Namespace class
-                if (!empty($class[$name->toString()])) {
+                if (\array_key_exists($name->toString(), $class)) {
                     $requireOnceInfo->addRequireOnce($class[$name->toString()]);
                     continue;
                 }
 
                 # Append same name space class
-                if($namespace) {
+                if($namespace) { /** @phpstan-ignore-line */
                     $className = $namespace.'\\'. $name->toCodeString();
-                    if (!empty($class[$className])) {
+                    if (\array_key_exists($className, $class)) {
                         $requireOnceInfo->addRequireOnce($class[$className]);
                     }
                 }

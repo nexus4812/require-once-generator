@@ -1,7 +1,7 @@
 <?php declare(strict_types=1);
 
 
-namespace RequireOnceGenerator\Domain\Collection;
+namespace RequireOnceGenerator\Domain\Model\Collection;
 
 
 /**

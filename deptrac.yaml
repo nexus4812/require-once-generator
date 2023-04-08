@@ -7,17 +7,17 @@ deptrac:
     - name: ValueObject
       collectors:
         - type: directory
-          value: src/Domain/ValueObject/.*
+          value: src/Domain/Model/ValueObject/.*
 
     - name: Collection
       collectors:
         - type: directory
-          value: src/Domain/Collection/.*
+          value: src/Domain/Model/Collection/.*
 
     - name: Entity
       collectors:
         - type: directory
-          value: src/Domain/Entity/.*
+          value: src/Domain/Model/Entity/.*
 
     - name: Application
       collectors:

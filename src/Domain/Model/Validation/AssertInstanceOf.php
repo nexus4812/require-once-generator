@@ -1,7 +1,7 @@
 <?php declare(strict_types=1);
 
 
-namespace RequireOnceGenerator\Domain\Validation;
+namespace RequireOnceGenerator\Domain\Model\Validation;
 
 
 use InvalidArgumentException;

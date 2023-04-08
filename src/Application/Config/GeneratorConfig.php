@@ -30,7 +30,8 @@ class GeneratorConfig implements GeneratorConfigInterface
             [
                 $this->path->basePath('src'),
                 $this->path->basePath('domain'),
-            ])->name('*.php');
+            ]
+        )->name('*.php');
     }
 
     /**

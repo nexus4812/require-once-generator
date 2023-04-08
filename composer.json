@@ -28,12 +28,14 @@
         "mockery/mockery": "^1.5",
         "phpmd/phpmd": "^2.13",
         "qossmic/deptrac-shim": "^1.0",
-        "phpunitgen/console": "^5.0"
+        "phpunitgen/console": "^5.0",
+        "phpstan/phpstan-strict-rules": "^1.5",
+        "phpstan/extension-installer": "^1.2"
     },
     "scripts": {
         "fixer": "vendor/bin/php-cs-fixer fix",
-        "stan": "vendor/bin/phpstan analyse -l max src bootstrap tests",
-        "md": "vendor/bin/phpmd src,bootstrap text cleancode,codesize,controversial,design,naming,unusedcode",
+        "stan": "vendor/bin/phpstan analyse -l max src tests",
+        "md": "vendor/bin/phpmd src text ruleset.xml",
         "deptrac": "vendor/bin/deptrac analyse",
         "deptrac-display": "vendor/bin/deptrac analyse --formatter=graphviz-display",
         "unit": "vendor/phpunit/phpunit/phpunit",
@@ -45,5 +47,10 @@
             "composer md"
         ],
         "create-class-map": "php generator.php create-class-map"
+    },
+    "config": {
+        "allow-plugins": {
+            "phpstan/extension-installer": true
+        }
     }
 }

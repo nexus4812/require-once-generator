@@ -1,11 +1,11 @@
 <?php declare(strict_types=1);
 
 
-namespace RequireOnceGenerator\Domain\Entity;
+namespace RequireOnceGenerator\Domain\Model\Entity;
 
 
-use RequireOnceGenerator\Domain\Collection\RequireOnceCollection;
-use RequireOnceGenerator\Domain\ValueObject\AbsolutePath;
+use RequireOnceGenerator\Domain\Model\Collection\RequireOnceCollection;
+use RequireOnceGenerator\Domain\Model\ValueObject\AbsolutePath;
 
 class FileDependencyInfo
 {
@@ -21,7 +21,7 @@ class FileDependencyInfo
         return new self($filePath, new RequireOnceCollection());
     }
 
-    public function addRequireOnce(RequireOnce $string): void
+    public function addRequireOnce(FileLoadContents $string): void
     {
         $this->requireOnces->add($string);
     }

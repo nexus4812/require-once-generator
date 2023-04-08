@@ -1,13 +1,13 @@
 <?php declare(strict_types=1);
 
 
-namespace RequireOnceGenerator\Domain\Entity;
+namespace RequireOnceGenerator\Domain\Model\Entity;
 
-use RequireOnceGenerator\Domain\ValueObject\AbsolutePath;
-use RequireOnceGenerator\Domain\ValueObject\LoadMethod;
-use RequireOnceGenerator\Domain\ValueObject\RequireOncePrefix;
+use RequireOnceGenerator\Domain\Model\ValueObject\AbsolutePath;
+use RequireOnceGenerator\Domain\Model\ValueObject\LoadMethod;
+use RequireOnceGenerator\Domain\Model\ValueObject\RequireOncePrefix;
 
-class RequireOnce
+class FileLoadContents
 {
     public function __construct(
         private LoadMethod $loadMethod,
@@ -18,14 +18,15 @@ class RequireOnce
     }
 
     /**
-     * Create Require once code
+     * Create require once code
      * ex. require_once PROJECT_ROOT . 'src/Controller/MyPageController';
+     * ex. include_once '/home/my/project/src/Controller/MyPageController';
      *
      * @return string
      */
     public function createPHPCode(): string
     {
-        $path = $this->prefix ?
+        $path = $this->prefix !== null ?
             $this->prefix->toPrefixPath($this->requireFilePath) :
             $this->requireFilePath->value();
 

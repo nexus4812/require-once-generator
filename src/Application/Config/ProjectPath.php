@@ -4,6 +4,8 @@
 namespace RequireOnceGenerator\Application\Config;
 
 
+use RequireOnceGenerator\Application\Helper\StrictFunctions;
+
 class ProjectPath
 {
     /**
@@ -12,6 +14,11 @@ class ProjectPath
      */
     public function __construct(private string $basePath)
     {
+    }
+
+    public static function createByCwd(): self
+    {
+        return new self(StrictFunctions::getcwd());
     }
 
     /**

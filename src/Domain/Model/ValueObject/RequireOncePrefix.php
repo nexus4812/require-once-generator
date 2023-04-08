@@ -1,7 +1,7 @@
 <?php declare(strict_types=1);
 
 
-namespace RequireOnceGenerator\Domain\ValueObject;
+namespace RequireOnceGenerator\Domain\Model\ValueObject;
 
 
 class RequireOncePrefix implements ValueObjectInterface
@@ -20,7 +20,7 @@ class RequireOncePrefix implements ValueObjectInterface
 
     public function toPrefixPath(AbsolutePath $path): string
     {
-        $relativePath = str_replace($this->replacePath->value(), '', $path->value()) ?: '';
+        $relativePath = str_replace($this->replacePath->value(), '', $path->value());
         return $this->prefix . '/' . $relativePath;
     }
 }

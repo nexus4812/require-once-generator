@@ -5,7 +5,7 @@ namespace RequireOnceGenerator\Application\Parser;
 
 
 use PhpParser\Parser;
-use RequireOnceGenerator\Domain\ValueObject\AbsolutePath;
+use RequireOnceGenerator\Domain\Model\ValueObject\AbsolutePath;
 use RuntimeException;
 
 class NodeCollectionFactory
@@ -28,6 +28,10 @@ class NodeCollectionFactory
 
     public function createFromAbsolutePath(AbsolutePath $path): NodeCollection
     {
-        return self::createFromRawFile(file_get_contents($path->value()) ?: '');
+        $file = file_get_contents($path->value());
+        if ($file === false) {
+            throw new RuntimeException("file_get_content return is false");
+        }
+        return self::createFromRawFile($file);
     }
 }
