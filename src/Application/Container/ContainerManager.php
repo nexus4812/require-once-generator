@@ -9,6 +9,7 @@ use DI\ContainerBuilder;
 use DI\DependencyException;
 use DI\NotFoundException;
 use Exception;
+use RuntimeException;
 
 class ContainerManager
 {
@@ -35,6 +36,10 @@ class ContainerManager
      */
     public static function resolve(string $classString): mixed
     {
-        return self::create()->make($classString);
+        $class = self::create()->make($classString);
+        if (!$class instanceof $classString) {
+            throw new RuntimeException("Failed resolve class dependencies: {$classString}");
+        }
+        return $class;
     }
 }
