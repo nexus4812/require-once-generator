@@ -4,6 +4,7 @@
 namespace RequireOnceGenerator\Application\Command;
 
 use RequireOnceGenerator\Application\Analyzer\GenerateClassList;
+use RequireOnceGenerator\Application\Container\ContainerManager;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;
@@ -12,20 +13,6 @@ use Symfony\Component\Console\Output\OutputInterface;
 class CreateClassListCacheCommand extends Command
 {
     protected static $defaultName = 'create-class-map';
-    /**
-     * @var GenerateClassList
-     */
-    private GenerateClassList $generateClassList;
-
-    /**
-     * @param GenerateClassList $generateClassList
-     * @return CreateClassListCacheCommand
-     */
-    public function setGenerateClassList(GenerateClassList $generateClassList): self
-    {
-        $this->generateClassList = $generateClassList;
-        return $this;
-    }
 
     /**
      * @param InputInterface $input
@@ -36,7 +23,9 @@ class CreateClassListCacheCommand extends Command
      */
     protected function execute(InputInterface $input, OutputInterface $output): int
     {
-        $this->generateClassList->create();
+        /** @var GenerateClassList $class */
+        $class = ContainerManager::resolve(GenerateClassList::class);
+        $class->create();
 
         return Command::SUCCESS;
     }

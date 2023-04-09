@@ -29,7 +29,6 @@ class GeneratorConfig implements GeneratorConfigInterface
         return Finder::create()->in(
             [
                 $this->path->basePath('src'),
-                $this->path->basePath('domain'),
             ]
         )->name('*.php');
     }
