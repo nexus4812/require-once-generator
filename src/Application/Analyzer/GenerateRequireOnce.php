@@ -3,6 +3,12 @@
 
 namespace RequireOnceGenerator\Application\Analyzer;
 
+use PhpParser\Node;
+use PhpParser\Node\Expr\New_;
+use PhpParser\Node\Expr\StaticCall;
+use PhpParser\Node\Stmt\Class_;
+use PhpParser\NodeTraverser;
+use PhpParser\NodeVisitorAbstract;
 use RequireOnceGenerator\Application\Config\GeneratorConfigInterface;
 use RequireOnceGenerator\Application\Parser\NodeCollectionFactory;
 use RequireOnceGenerator\Domain\Model\Entity\FileDependencyInfo;
@@ -26,25 +32,30 @@ class GenerateRequireOnce
         foreach ($this->config->getTargetFinder() as $file) {
             $absolutePath = AbsolutePath::createFromSplFileInfo($file);
             $nodes = $this->nodesFactory->createFromAbsolutePath($absolutePath);
-            $namespace = $nodes->findNameSpace()?->name?->toString();
 
-            $requireOnceInfo = FileDependencyInfo::createWithEmpty($absolutePath);
-            foreach ($nodes->filterName() as $name) {
-                # Append other Namespace class
-                if (\array_key_exists($name->toString(), $class)) {
-                    $requireOnceInfo->addRequireOnce($class[$name->toString()]);
-                    continue;
-                }
+            $visitor = new class() extends NodeVisitorAbstract {
+                public $classes = [];
 
-                # Append same name space class
-                if($namespace) { /** @phpstan-ignore-line */
-                    $className = $namespace.'\\'. $name->toCodeString();
-                    if (\array_key_exists($className, $class)) {
-                        $requireOnceInfo->addRequireOnce($class[$className]);
+                public function enterNode(Node $node): void {
+                    if ($node instanceof Class_) {
+                        $this->classes[] = $node->namespacedName->toString();
+                    } elseif ($node instanceof New_) {
+                        $className = $node->class->toString();
+                        if (!\in_array($className, $this->classes, true)) {
+                            $this->classes[] = $className;
+                        }
+                    } elseif ($node instanceof StaticCall) {
+                        $className = $node->class->toString();
+                        if (!\in_array($className, $this->classes, true)) {
+                            $this->classes[] = $className;
+                        }
                     }
                 }
-            }
-            var_dump($requireOnceInfo->toArray());
+            };
+
+            $traverser = new NodeTraverser();
+            $traverser->addVisitor($visitor);
+            $traverser->traverse($stmts);
         }
     }
 }

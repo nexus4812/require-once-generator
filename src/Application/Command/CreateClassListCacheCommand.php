@@ -3,6 +3,8 @@
 
 namespace RequireOnceGenerator\Application\Command;
 
+use DI\DependencyException;
+use DI\NotFoundException;
 use RequireOnceGenerator\Application\Analyzer\GenerateClassList;
 use RequireOnceGenerator\Application\Container\ContainerManager;
 use Symfony\Component\Console\Command\Command;
@@ -19,14 +21,14 @@ class CreateClassListCacheCommand extends Command
      * @param OutputInterface $output
      * @return int
      *
+     * @throws DependencyException
+     * @throws NotFoundException
      * @SuppressWarnings(PHPMD.UnusedFormalParameter)
      */
     protected function execute(InputInterface $input, OutputInterface $output): int
     {
         /** @var GenerateClassList $class */
-        $class = ContainerManager::resolve(GenerateClassList::class);
-        $class->create();
-
+        ContainerManager::resolve(GenerateClassList::class)->create();
         return Command::SUCCESS;
     }
 
