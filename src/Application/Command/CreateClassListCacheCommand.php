@@ -28,6 +28,7 @@ class CreateClassListCacheCommand extends Command
      */
     protected function execute(InputInterface $input, OutputInterface $output): int
     {
+
         /** @var GenerateClassList $class */
         ContainerManager::resolve(GenerateClassList::class)->create();
         return Command::SUCCESS;

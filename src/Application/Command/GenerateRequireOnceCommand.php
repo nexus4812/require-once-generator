@@ -29,7 +29,7 @@ class GenerateRequireOnceCommand extends Command
     protected function execute(InputInterface $input, OutputInterface $output): int
     {
         /** @var GenerateRequireOnce $class */
-        var_dump(ContainerManager::resolve(GenerateRequireOnce::class)->create());
+        ContainerManager::resolve(GenerateRequireOnce::class)->create();
         return Command::SUCCESS;
     }
 

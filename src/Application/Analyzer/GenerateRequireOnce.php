@@ -10,7 +10,7 @@ use RequireOnceGenerator\Application\Config\GeneratorConfigInterface;
 readonly class GenerateRequireOnce
 {
     public function __construct(
-        private ClassDependencyAnalyzer                   $analyzer,
+        private ClassDependencyAnalyzer  $analyzer,
         private GeneratorConfigInterface $config,
     ) {
     }
