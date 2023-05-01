@@ -1,9 +1,11 @@
 <?php
 
+// You need to run this command
+// composer require --dev
 require_once __DIR__ . '/vendor/autoload.php';
 
 use PhpParser\Node;
-use PhpParser\Node\Expr\New_;
+use PhpParser\Node\ExprNew_;
 use PhpParser\Node\Expr\StaticCall;
 use PhpParser\Node\Stmt\Class_;
 use PhpParser\Node\Stmt\Namespace_;
@@ -113,4 +115,3 @@ $traverser->traverse($stmts);
 
 print_r($visitor->getClasses());
 print_r($visitor->getUses());
-print_r($visitor->getFullUseClass());

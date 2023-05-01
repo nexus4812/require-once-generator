@@ -8,7 +8,7 @@ use RequireOnceGenerator\Application\ClassPath\ClassList;
 use RequireOnceGenerator\Application\Config\GeneratorConfigInterface;
 use SplFileInfo;
 
-class GenerateClassList
+readonly   class GenerateClassList
 {
     public function __construct(
         private ClassPathFactory $pathFactory,
