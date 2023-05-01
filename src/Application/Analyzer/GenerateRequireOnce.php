@@ -11,18 +11,15 @@ use RequireOnceGenerator\Application\Config\GeneratorConfigInterface;
 readonly class GenerateRequireOnce
 {
     public function __construct(
-
         private Parser                   $parser,
-
         private GeneratorConfigInterface $config,
-
-        private
     )
     {
     }
 
-    public function create(): void
+    public function create(): array
     {
+        $result = [];
         foreach ($this->config->getDependentClassFinder() as $file) {
             $nodeTraverser = new NodeTraverser();
             $classDependencyVisitor = new ClassDependencyVisitor();
@@ -32,7 +29,9 @@ readonly class GenerateRequireOnce
             $nodeTraverser->addVisitor($classDependencyVisitor);
             $nodeTraverser->traverse($stmts);
 
-            $classDependencyVisitor->getClasses();
+            $result[$filePath] = $classDependencyVisitor->getClasses();
         }
+
+        return $result;
     }
 }

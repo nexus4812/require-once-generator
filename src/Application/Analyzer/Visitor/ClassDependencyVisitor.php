@@ -33,7 +33,13 @@ class ClassDependencyVisitor extends NodeVisitorAbstract
             return;
         }
 
-        if (!$node instanceof Class_ && !$node instanceof New_ && !$node instanceof StaticCall) {
+        if (
+            (
+                !$node instanceof Class_ &&
+                !$node instanceof New_ &&
+                !$node instanceof StaticCall) ||
+            !property_exists($node, 'class')
+        ) {
             return;
         }
 
@@ -65,8 +71,8 @@ class ClassDependencyVisitor extends NodeVisitorAbstract
         $result = [];
         foreach ($this->getClasses() as $class) {
             $result[] = array_key_exists($class, $this->uses) ?
-                 $this->uses[$class] :
-                 $class;
+                $this->uses[$class] :
+                $class;
         }
 
         return $result;
