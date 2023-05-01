@@ -6,15 +6,13 @@ namespace RequireOnceGenerator\Application\Command;
 
 use DI\DependencyException;
 use DI\NotFoundException;
-use RequireOnceGenerator\Application\Analyzer\GenerateClassList;
-use RequireOnceGenerator\Application\Analyzer\GenerateRequireOnce;
+use RequireOnceGenerator\Application\Analyzer\GenerateDependencyList;
 use RequireOnceGenerator\Application\Container\ContainerManager;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
-use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
 
-class GenerateRequireOnceCommand extends Command
+class GenerateDependencyListCommand extends Command
 {
     protected static $defaultName = 'generate-require-once';
 
@@ -28,8 +26,8 @@ class GenerateRequireOnceCommand extends Command
      */
     protected function execute(InputInterface $input, OutputInterface $output): int
     {
-        /** @var GenerateRequireOnce $class */
-        ContainerManager::resolve(GenerateRequireOnce::class)->create();
+        /** @var GenerateDependencyList $class */
+        ContainerManager::resolve(GenerateDependencyList::class)->create();
         return Command::SUCCESS;
     }
 

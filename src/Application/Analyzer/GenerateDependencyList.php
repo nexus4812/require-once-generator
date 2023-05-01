@@ -7,7 +7,7 @@ namespace RequireOnceGenerator\Application\Analyzer;
 use RequireOnceGenerator\Application\Analyzer\Reflector\ClassDependencyAnalyzer;
 use RequireOnceGenerator\Application\Config\GeneratorConfigInterface;
 
-readonly class GenerateRequireOnce
+readonly class GenerateDependencyList
 {
     public function __construct(
         private ClassDependencyAnalyzer  $analyzer,

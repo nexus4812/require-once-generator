@@ -6,7 +6,7 @@ namespace RequireOnceGenerator\Application\Config;
 
 use RequireOnceGenerator\Application\Helper\StrictFunctions;
 
-class ProjectPath
+readonly class ProjectPath
 {
     /**
      * ProjectPath constructor.

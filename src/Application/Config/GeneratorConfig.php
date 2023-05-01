@@ -6,7 +6,7 @@ namespace RequireOnceGenerator\Application\Config;
 
 use Symfony\Component\Finder\Finder;
 
-class GeneratorConfig implements GeneratorConfigInterface
+readonly class GeneratorConfig implements GeneratorConfigInterface
 {
     /**
      * @param ProjectPath $path
