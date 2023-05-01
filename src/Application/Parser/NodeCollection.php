@@ -1,5 +1,6 @@
-<?php declare(strict_types=1);
+<?php
 
+declare(strict_types=1);
 
 namespace RequireOnceGenerator\Application\Parser;
 
@@ -15,8 +16,7 @@ class NodeCollection
     public function __construct(
         private NodeFilter $filter,
         private array $nodes
-    )
-    {
+    ) {
     }
 
     public function findNameSpace(): Node\Stmt\Namespace_|null

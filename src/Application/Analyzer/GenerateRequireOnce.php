@@ -1,5 +1,6 @@
-<?php declare(strict_types=1);
+<?php
 
+declare(strict_types=1);
 
 namespace RequireOnceGenerator\Application\Analyzer;
 
@@ -11,8 +12,7 @@ readonly class GenerateRequireOnce
     public function __construct(
         private ClassDependencyAnalyzer                   $analyzer,
         private GeneratorConfigInterface $config,
-    )
-    {
+    ) {
     }
 
     public function create(): void

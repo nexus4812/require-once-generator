@@ -1,5 +1,6 @@
-<?php declare(strict_types=1);
+<?php
 
+declare(strict_types=1);
 
 namespace RequireOnceGenerator\Application\ClassPath;
 
@@ -18,8 +19,7 @@ class ClassPathFactory
     public function __construct(
         private Parser $parser,
         private NodeFilter $nodeFilter
-    )
-    {
+    ) {
     }
 
     /**

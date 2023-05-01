@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace RequireOnceGenerator\Application\Analyzer\Visitor;
 
 use PhpParser\Node;
@@ -19,7 +21,7 @@ class ClassDependencyVisitor extends NodeVisitorAbstract
     private string $currentNamespace = '';
     private array $uses;
 
-    public function enterNode(Node $node)
+    public function enterNode(Node $node): void
     {
         if ($node instanceof Namespace_) {
             $this->currentNamespace = $node->name->toString() . '\\';
@@ -37,7 +39,8 @@ class ClassDependencyVisitor extends NodeVisitorAbstract
             (
                 !$node instanceof Class_ &&
                 !$node instanceof New_ &&
-                !$node instanceof StaticCall) ||
+                !$node instanceof StaticCall
+            ) ||
             !property_exists($node, 'class')
         ) {
             return;
@@ -48,7 +51,7 @@ class ClassDependencyVisitor extends NodeVisitorAbstract
             $className = $this->currentNamespace . $className;
         }
 
-        if (!in_array($className, $this->classes)) {
+        if (!\in_array($className, $this->classes, true)) {
             $this->classes[] = $className;
         }
     }
@@ -70,7 +73,7 @@ class ClassDependencyVisitor extends NodeVisitorAbstract
     {
         $result = [];
         foreach ($this->getClasses() as $class) {
-            $result[] = array_key_exists($class, $this->uses) ?
+            $result[] = \array_key_exists($class, $this->uses) ?
                 $this->uses[$class] :
                 $class;
         }

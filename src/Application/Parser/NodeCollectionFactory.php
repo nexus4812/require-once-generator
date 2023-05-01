@@ -1,8 +1,8 @@
-<?php declare(strict_types=1);
+<?php
 
+declare(strict_types=1);
 
 namespace RequireOnceGenerator\Application\Parser;
-
 
 use PhpParser\Parser;
 use RequireOnceGenerator\Domain\Model\ValueObject\AbsolutePath;
@@ -13,8 +13,7 @@ class NodeCollectionFactory
     public function __construct(
         private NodeFilter $filter,
         private Parser $parser
-    )
-    {
+    ) {
     }
 
     public function createFromRawFile(string $rawCode): NodeCollection

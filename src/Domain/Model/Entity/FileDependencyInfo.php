@@ -1,8 +1,8 @@
-<?php declare(strict_types=1);
+<?php
 
+declare(strict_types=1);
 
 namespace RequireOnceGenerator\Domain\Model\Entity;
-
 
 use RequireOnceGenerator\Domain\Model\Collection\RequireOnceCollection;
 use RequireOnceGenerator\Domain\Model\ValueObject\AbsolutePath;
@@ -12,8 +12,7 @@ class FileDependencyInfo
     public function __construct(
         private AbsolutePath $filePath,
         private RequireOnceCollection $requireOnces
-    )
-    {
+    ) {
     }
 
     public static function createWithEmpty(AbsolutePath $filePath): self

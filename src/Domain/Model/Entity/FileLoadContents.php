@@ -1,5 +1,6 @@
-<?php declare(strict_types=1);
+<?php
 
+declare(strict_types=1);
 
 namespace RequireOnceGenerator\Domain\Model\Entity;
 
@@ -13,8 +14,7 @@ class FileLoadContents
         private LoadMethod $loadMethod,
         private AbsolutePath $requireFilePath,
         private RequireOncePrefix|null $prefix
-    )
-    {
+    ) {
     }
 
     /**

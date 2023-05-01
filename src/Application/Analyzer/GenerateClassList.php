@@ -1,5 +1,6 @@
-<?php declare(strict_types=1);
+<?php
 
+declare(strict_types=1);
 
 namespace RequireOnceGenerator\Application\Analyzer;
 
@@ -8,13 +9,12 @@ use RequireOnceGenerator\Application\ClassPath\ClassList;
 use RequireOnceGenerator\Application\Config\GeneratorConfigInterface;
 use SplFileInfo;
 
-readonly   class GenerateClassList
+readonly class GenerateClassList
 {
     public function __construct(
         private ClassPathFactory $pathFactory,
         private GeneratorConfigInterface $config
-    )
-    {
+    ) {
     }
 
     public function create(): void

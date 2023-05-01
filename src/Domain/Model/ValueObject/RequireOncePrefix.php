@@ -1,16 +1,15 @@
-<?php declare(strict_types=1);
+<?php
 
+declare(strict_types=1);
 
 namespace RequireOnceGenerator\Domain\Model\ValueObject;
-
 
 class RequireOncePrefix implements ValueObjectInterface
 {
     public function __construct(
         private string $prefix,
         private AbsolutePath $replacePath
-    )
-    {
+    ) {
     }
 
     public function value(): string
