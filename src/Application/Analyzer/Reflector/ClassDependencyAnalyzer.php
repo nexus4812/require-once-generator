@@ -3,8 +3,9 @@
 namespace RequireOnceGenerator\Application\Analyzer\Reflector;
 
 use ReflectionClass;
+use ReflectionUnionType;
 
-class ClassDependencyChecker
+class ClassDependencyAnalyzer
 {
     private array $dependencies = [];
 
@@ -19,7 +20,7 @@ class ClassDependencyChecker
         $this->getConstructorDependencies($class);
         $this->getPropertyDependencies($class);
         $this->getMethodDependencies($class);
-        $this->resolveDependenciesRecursively();
+//        $this->resolveDependenciesRecursively();
         return array_unique($this->getDependencies());
     }
 
@@ -38,7 +39,7 @@ class ClassDependencyChecker
         $params = $constructor->getParameters();
         foreach ($params as $param) {
             $type = $param->getType();
-            if ($type !== null) {
+            if ($type !== null && !$type->isBuiltin()) {
                 $this->dependencies[] = $type->getName();
             }
         }
@@ -54,7 +55,7 @@ class ClassDependencyChecker
         $properties = $class->getProperties();
         foreach ($properties as $property) {
             $type = $property->getType();
-            if ($type !== null) {
+            if ($type !== null && !$type->isBuiltin()) {
                 $this->dependencies[] = $type->getName();
             }
         }
@@ -70,10 +71,17 @@ class ClassDependencyChecker
         $methods = $class->getMethods();
         foreach ($methods as $method) {
             $params = $method->getParameters();
+
             foreach ($params as $param) {
-                $type = $param->getType();
-                if ($type !== null) {
-                    $this->dependencies[] = $type->getName();
+                $reflectionIntersectionType = $param->getType();
+                if ($reflectionIntersectionType === null || !method_exists($reflectionIntersectionType, 'getType')) {
+                    continue;
+                }
+
+                $name = $reflectionIntersectionType->getName();
+
+                if ($name !== null && !$reflectionIntersectionType->isBuiltin()) {
+                    $this->dependencies[] = $name;
                 }
             }
         }
