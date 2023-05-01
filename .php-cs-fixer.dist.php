@@ -16,6 +16,9 @@ return $config
         '@PhpCsFixer:risky' => true,
         '@Symfony:risky' => true,
         '@PHP80Migration:risky' => true,
+        '@PHP80Migration' => true,
+        '@PSR12' => true,
+        '@PSR12:risky' => true,
         '@PHP82Migration' => true,
         'declare_strict_types' => true,
     ])

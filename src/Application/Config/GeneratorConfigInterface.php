@@ -7,11 +7,17 @@ use Symfony\Component\Finder\Finder;
 interface GeneratorConfigInterface
 {
     /**
-     * ".require-once-generator.cache"'s path
+     * ".rog-class-list.cache"'s path
      *
      * @return string
      */
     public function getClassListCachePath(): string;
+
+
+    /**
+     * @return mixed
+     */
+    public function getDependenciesCachePath();
 
     /**
      * Require once target files

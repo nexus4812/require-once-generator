@@ -15,7 +15,7 @@ readonly class GenerateRequireOnce
     {
     }
 
-    public function create(): array
+    public function create(): void
     {
         $result = [];
 
@@ -28,6 +28,7 @@ readonly class GenerateRequireOnce
             $result[$class] = $this->analyzer->getClassDependencies(new \ReflectionClass($class));
         }
 
-        return $result;
+        $array = var_export($result, true);
+        file_put_contents($this->config->getDependenciesCachePath(), "<?php return {$array}; ?>");
     }
 }

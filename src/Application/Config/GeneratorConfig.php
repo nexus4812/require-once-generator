@@ -18,7 +18,15 @@ class GeneratorConfig implements GeneratorConfigInterface
      */
     public function getClassListCachePath(): string
     {
-        return $this->path->basePath('.require-once-generator.cache');
+        return $this->path->basePath('.rog-class-list.cache');
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function getDependenciesCachePath(): string
+    {
+        return $this->path->basePath('.rog-dependencies.cache');
     }
 
     /**
