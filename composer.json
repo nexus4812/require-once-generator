@@ -40,6 +40,7 @@
         "deptrac-display": "vendor/bin/deptrac analyse --formatter=graphviz-display",
         "unit": "vendor/phpunit/phpunit/phpunit",
         "phpunitgen": "vendor/bin/phpunitgen src",
+        "in": "composer inspect",
         "inspect": [
             "composer fixer",
             "composer stan",
