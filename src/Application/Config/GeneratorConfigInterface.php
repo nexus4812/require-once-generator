@@ -17,7 +17,7 @@ interface GeneratorConfigInterface
 
 
     /**
-     * @return mixed
+     * @return string
      */
     public function getDependenciesCachePath();
 

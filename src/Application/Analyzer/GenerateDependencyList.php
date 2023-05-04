@@ -21,7 +21,7 @@ readonly class GenerateDependencyList
 
         $classListCachePath = $this->config->getClassListCachePath();
 
-        /** @var array<string, string> $classListCachePath1 */
+        /** @var array<string, string> $classListCachePath */
         $classListCachePath = require $classListCachePath;
 
         foreach ($classListCachePath as $class => $directory) {
