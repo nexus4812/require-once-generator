@@ -17,7 +17,7 @@ class ClassDependencyAnalyzer
     /**
      * 指定されたクラスの依存するクラスを再帰的に取得する
      *
-     * @param ReflectionClass $class 取得するクラス
+     * @param ReflectionClass<object> $class 取得するクラス
      * @return array<int, string> 依存するクラスの配列
      */
     public function getClassDependencies(ReflectionClass $class): array
@@ -25,14 +25,13 @@ class ClassDependencyAnalyzer
         $this->getConstructorDependencies($class);
         $this->getPropertyDependencies($class);
         $this->getMethodDependencies($class);
-//        $this->resolveDependenciesRecursively();
         return array_unique($this->getDependencies());
     }
 
     /**
      * コンストラクタの依存するクラスを取得する
      *
-     * @param ReflectionClass $class 取得するクラス
+     * @param ReflectionClass<object> $class 取得するクラス
      */
     private function getConstructorDependencies(ReflectionClass $class): void
     {
@@ -53,7 +52,7 @@ class ClassDependencyAnalyzer
     /**
      * プロパティの依存するクラスを取得する
      *
-     * @param ReflectionClass $class 取得するクラス
+     * @param ReflectionClass<object> $class 取得するクラス
      */
     private function getPropertyDependencies(ReflectionClass $class): void
     {
@@ -69,7 +68,7 @@ class ClassDependencyAnalyzer
     /**
      * メソッドの依存するクラスを取得する
      *
-     * @param ReflectionClass $class 取得するクラス
+     * @param ReflectionClass<object> $class 取得するクラス
      */
     private function getMethodDependencies(ReflectionClass $class): void
     {
