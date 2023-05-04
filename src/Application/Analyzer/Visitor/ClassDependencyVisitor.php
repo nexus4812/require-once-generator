@@ -19,6 +19,10 @@ class ClassDependencyVisitor extends NodeVisitorAbstract
      */
     private array $classes = [];
     private string $currentNamespace = '';
+
+    /**
+     * @var array <string, string>
+     */
     private array $uses;
 
     public function enterNode(Node $node): void
