@@ -6,6 +6,7 @@ namespace RequireOnceGenerator\Application\Command;
 
 use DI\DependencyException;
 use DI\NotFoundException;
+use RequireOnceGenerator\Application\Analyzer\GenerateClassList;
 use RequireOnceGenerator\Application\Analyzer\GenerateDependencyList;
 use RequireOnceGenerator\Application\Container\ContainerManager;
 use Symfony\Component\Console\Command\Command;
@@ -26,6 +27,7 @@ class GenerateDependencyListCommand extends Command
      */
     protected function execute(InputInterface $input, OutputInterface $output): int
     {
+        ContainerManager::resolve(GenerateClassList::class)->create();
         ContainerManager::resolve(GenerateDependencyList::class)->create();
         return Command::SUCCESS;
     }

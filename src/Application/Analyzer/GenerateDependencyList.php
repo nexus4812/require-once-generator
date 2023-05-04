@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace RequireOnceGenerator\Application\Analyzer;
 
+use ReflectionClass;
+use ReflectionException;
 use RequireOnceGenerator\Application\Analyzer\Reflector\ClassDependencyAnalyzer;
 use RequireOnceGenerator\Application\Config\GeneratorConfigInterface;
 
@@ -15,17 +17,21 @@ readonly class GenerateDependencyList
     ) {
     }
 
+    /**
+     * @throws ReflectionException
+     * @SuppressWarnings(PHPMD.UnusedLocalVariable)
+     */
     public function create(): void
     {
         $result = [];
 
         $classListCachePath = $this->config->getClassListCachePath();
 
-        /** @var array<string, string> $classListCachePath */
+        /** @var array<class-string, string> $classListCachePath */
         $classListCachePath = require $classListCachePath;
 
         foreach ($classListCachePath as $class => $directory) {
-            $result[$class] = $this->analyzer->getClassDependencies(new \ReflectionClass($class));
+            $result[$class] = $this->analyzer->getClassDependencies(new ReflectionClass($class));
         }
 
         $array = var_export($result, true);
