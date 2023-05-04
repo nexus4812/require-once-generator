@@ -9,13 +9,16 @@ use ReflectionUnionType;
 
 class ClassDependencyAnalyzer
 {
+    /**
+     * @var array<int, string>
+     */
     private array $dependencies = [];
 
     /**
      * 指定されたクラスの依存するクラスを再帰的に取得する
      *
      * @param ReflectionClass $class 取得するクラス
-     * @return array 依存するクラスの配列
+     * @return array<int, string> 依存するクラスの配列
      */
     public function getClassDependencies(ReflectionClass $class): array
     {
