@@ -26,7 +26,6 @@ class GenerateDependencyListCommand extends Command
      */
     protected function execute(InputInterface $input, OutputInterface $output): int
     {
-        /** @var GenerateDependencyList $class */
         ContainerManager::resolve(GenerateDependencyList::class)->create();
         return Command::SUCCESS;
     }
