@@ -7,7 +7,7 @@ namespace RequireOnceGenerator\Application\Analyzer\Reflector;
 use ReflectionClass;
 use ReflectionNamedType;
 
-class ClassDependencyAnalyzer
+readonly class ClassDependencyAnalyzer
 {
     /**
      * 指定されたクラスの依存するクラスを再帰的に取得する
