@@ -5,6 +5,8 @@ composer.phar
 .require-once-generator.cache
 .deptrac.cache
 .phpunit.result.cache
+.*.cache
+coverage-result/
 
 # require-once-generator cache
 .rog-class-list.cache
