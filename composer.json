@@ -38,14 +38,15 @@
         "md": "vendor/bin/phpmd src text ruleset.xml",
         "deptrac": "vendor/bin/deptrac analyse",
         "deptrac-display": "vendor/bin/deptrac analyse --formatter=graphviz-display",
-        "unit": "vendor/phpunit/phpunit/phpunit",
+        "unit": "vendor/phpunit/phpunit/phpunit tests",
         "phpunitgen": "vendor/bin/phpunitgen src",
         "in": "composer inspect",
         "inspect": [
             "composer fixer",
             "composer stan",
             "composer deptrac",
-            "composer md"
+            "composer md",
+            "composer unit"
         ],
         "create-class-map": "php generator.php create-class-map"
     },

@@ -30,7 +30,7 @@ class InsertRoadFunctionCommand extends Command
     {
         ContainerManager::resolve(GenerateClassList::class)->create();
         ContainerManager::resolve(GenerateDependencyList::class)->create();
-        // TODO create
+
         $output->writeln(self::$defaultName. ' is completed');
         return Command::SUCCESS;
     }
