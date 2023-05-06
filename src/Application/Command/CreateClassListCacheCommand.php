@@ -15,7 +15,7 @@ use Symfony\Component\Console\Output\OutputInterface;
 
 class CreateClassListCacheCommand extends Command
 {
-    protected static $defaultName = 'create-class-map';
+    protected static $defaultName = 'create-class-list';
 
     /**
      * @param InputInterface $input
@@ -35,8 +35,6 @@ class CreateClassListCacheCommand extends Command
 
     protected function configure(): void
     {
-        $this
-            ->setDescription('Generate class map')
-            ->addOption('path', '-p', InputOption::VALUE_REQUIRED, 'class source directory');
+        $this->setDescription('Create a correspondence table between php classes and the absolute paths where they exist');
     }
 }

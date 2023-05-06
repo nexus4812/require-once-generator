@@ -14,9 +14,9 @@ use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 
-class GenerateDependencyListCommand extends Command
+class InsertRoadFunctionCommand extends Command
 {
-    protected static $defaultName = 'create-dependency-list';
+    protected static $defaultName = 'insert-road-function-command';
 
     /**
      * @param InputInterface $input
@@ -30,12 +30,13 @@ class GenerateDependencyListCommand extends Command
     {
         ContainerManager::resolve(GenerateClassList::class)->create();
         ContainerManager::resolve(GenerateDependencyList::class)->create();
+        // TODO create
         $output->writeln(self::$defaultName. ' is completed');
         return Command::SUCCESS;
     }
 
     protected function configure(): void
     {
-        $this->setDescription('Create a correspondence table of dependencies on which the class depends');
+        $this->setDescription('Insert functions to perform loads, such as require_once, for .php files');
     }
 }
