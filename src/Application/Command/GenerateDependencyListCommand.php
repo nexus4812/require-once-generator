@@ -6,6 +6,7 @@ namespace RequireOnceGenerator\Application\Command;
 
 use DI\DependencyException;
 use DI\NotFoundException;
+use ReflectionException;
 use RequireOnceGenerator\Application\Analyzer\GenerateClassList;
 use RequireOnceGenerator\Application\Analyzer\GenerateDependencyList;
 use RequireOnceGenerator\Application\Container\ContainerManager;
@@ -22,7 +23,7 @@ class GenerateDependencyListCommand extends Command
      * @param OutputInterface $output
      * @return int
      * @throws DependencyException
-     * @throws NotFoundException
+     * @throws NotFoundException|ReflectionException
      * @SuppressWarnings(PHPMD.UnusedFormalParameter)
      */
     protected function execute(InputInterface $input, OutputInterface $output): int
