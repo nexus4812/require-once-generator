@@ -9,7 +9,7 @@ use RequireOnceGenerator\Domain\Model\Entity\FileLoadContents;
 /**
  * @extends ObjectCollection<int, FileLoadContents>
  */
-class RequireOnceCollection extends ObjectCollection
+class FileLoadContentsCollection extends ObjectCollection
 {
     protected string $className = FileLoadContents::class;
 }

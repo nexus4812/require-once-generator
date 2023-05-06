@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace RequireOnceGenerator\Application\Config;
 
+use RequireOnceGenerator\Domain\Model\ValueObject\LoadDirectoryPrefix;
+use RequireOnceGenerator\Domain\Model\ValueObject\LoadMethod;
 use Symfony\Component\Finder\Finder;
 
 readonly class GeneratorConfig implements GeneratorConfigInterface
@@ -49,5 +51,15 @@ readonly class GeneratorConfig implements GeneratorConfigInterface
     public function getTargetFinder(): Finder
     {
         return Finder::create()->in($this->path->basePath('src'))->name('*.php');
+    }
+
+    public function getLoadMethod(): LoadMethod
+    {
+        return LoadMethod::REQUIRE_ONCE;
+    }
+
+    public function getLoadDirectoryPrefix(): null|LoadDirectoryPrefix
+    {
+        return null;
     }
 }

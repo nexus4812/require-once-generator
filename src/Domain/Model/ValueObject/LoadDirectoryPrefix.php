@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace RequireOnceGenerator\Domain\Model\ValueObject;
 
-class RequireOncePrefix implements ValueObjectInterface
+class LoadDirectoryPrefix implements ValueObjectInterface
 {
     public function __construct(
         private string $prefix,

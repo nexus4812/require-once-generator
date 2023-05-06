@@ -7,7 +7,7 @@ namespace RequireOnceGenerator\Domain\Model\ValueObject;
 use SplFileInfo;
 use Stringable;
 
-class AbsolutePath implements ValueObjectInterface, Stringable
+readonly class AbsolutePath implements ValueObjectInterface, Stringable
 {
     public function __construct(private string $path)
     {

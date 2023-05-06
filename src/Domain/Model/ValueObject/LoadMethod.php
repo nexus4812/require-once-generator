@@ -4,40 +4,26 @@ declare(strict_types=1);
 
 namespace RequireOnceGenerator\Domain\Model\ValueObject;
 
-class LoadMethod implements ValueObjectInterface
+enum LoadMethod
 {
-    /** @var string  */
-    private const REQUIRE_ONCE = 'require_once';
+    /** @var string */
+    case REQUIRE_ONCE;
 
     /**
      * @var string
      */
-    private const INCLUDE_ONCE = 'include_once';
+    case INCLUDE_ONCE;
 
-    /**
-     * LoadMethod constructor.
-     */
-    private function __construct(private string $methodName)
+    public function toPHPMethodName(): string
     {
-    }
-
-    public static function requireOnce(): self
-    {
-        return new self(self::REQUIRE_ONCE);
-    }
-
-    public static function includeOnce(): self
-    {
-        return new self(self::INCLUDE_ONCE);
-    }
-
-    public function value(): string
-    {
-        return $this->methodName;
+        return match ($this) {
+            self::REQUIRE_ONCE => 'require_once',
+            self::INCLUDE_ONCE => 'include_once',
+        };
     }
 
     public function createPHPCode(string $argument): string
     {
-        return $this->value(). '"'. $argument. '";';
+        return $this->toPHPMethodName() . " '". $argument. "';";
     }
 }

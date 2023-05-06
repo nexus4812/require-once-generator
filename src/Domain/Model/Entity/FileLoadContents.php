@@ -6,14 +6,14 @@ namespace RequireOnceGenerator\Domain\Model\Entity;
 
 use RequireOnceGenerator\Domain\Model\ValueObject\AbsolutePath;
 use RequireOnceGenerator\Domain\Model\ValueObject\LoadMethod;
-use RequireOnceGenerator\Domain\Model\ValueObject\RequireOncePrefix;
+use RequireOnceGenerator\Domain\Model\ValueObject\LoadDirectoryPrefix;
 
-class FileLoadContents
+readonly class FileLoadContents
 {
     public function __construct(
         private LoadMethod $loadMethod,
         private AbsolutePath $requireFilePath,
-        private RequireOncePrefix|null $prefix
+        private LoadDirectoryPrefix|null $prefix
     ) {
     }
 
