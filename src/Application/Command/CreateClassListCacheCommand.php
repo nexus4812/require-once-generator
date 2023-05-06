@@ -29,6 +29,7 @@ class CreateClassListCacheCommand extends Command
     protected function execute(InputInterface $input, OutputInterface $output): int
     {
         ContainerManager::resolve(GenerateClassList::class)->create();
+        $output->writeln(self::$defaultName. ' is completed');
         return Command::SUCCESS;
     }
 

@@ -30,6 +30,7 @@ class GenerateDependencyListCommand extends Command
     {
         ContainerManager::resolve(GenerateClassList::class)->create();
         ContainerManager::resolve(GenerateDependencyList::class)->create();
+        $output->writeln(self::$defaultName. ' is completed');
         return Command::SUCCESS;
     }
 
