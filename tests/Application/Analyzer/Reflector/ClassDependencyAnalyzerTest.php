@@ -13,11 +13,15 @@ class ClassDependencyAnalyzerTest extends TestCase
 
     protected function setUp(): void
     {
-        $this->analyzer = new ClassDependencyAnalyzer();
+
     }
 
+    /**
+     * @covers ClassDependencyAnalyzer
+     */
     public function testGetClassDependencies(): void
     {
+        $this->analyzer = new ClassDependencyAnalyzer();
         $expectedDependencies = [
             'RequireOnceGenerator\Application\Analyzer\Reflector\DummyClassA',
             'RequireOnceGenerator\Application\Analyzer\Reflector\DummyClassB',

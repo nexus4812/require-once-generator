@@ -38,7 +38,7 @@
         "md": "vendor/bin/phpmd src text ruleset.xml",
         "deptrac": "vendor/bin/deptrac analyse",
         "deptrac-display": "vendor/bin/deptrac analyse --formatter=graphviz-display",
-        "unit": "vendor/phpunit/phpunit/phpunit tests",
+        "unit": "vendor/bin/phpunit --coverage-html coverage-result",
         "phpunitgen": "vendor/bin/phpunitgen src",
         "in": "composer inspect",
         "inspect": [
